@@ -1,8 +1,15 @@
-const {Schema, model} = require('mongoose');
+const mongoose = require("mongoose");
 
-const Document = new Schema({
-    _id: String,
-    data: Object
+const DocumentSchema = new mongoose.Schema({
+  _id: String,
+  name: {
+    type: String,
+    default: "Untitled document",
+  },
+  data: {
+    type: Object,
+    default: {},
+  },
 });
 
-module.exports = model('Document', Document);
+module.exports = mongoose.model("Document", DocumentSchema);

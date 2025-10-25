@@ -1,10 +1,284 @@
+:root {
+    --editor-header-height: 72px;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
  background-color: #f3f3f3;
  margin: 0;
+}
+
+.landing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.landing-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 2.5rem 2.75rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.landing-card h1 {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 1.9rem;
+    color: #111827;
+}
+
+.landing-subtitle {
+    margin: 0 0 1.75rem;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.98rem;
+}
+
+.landing-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.landing-input-row {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.landing-input-row input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    font-size: 1rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.landing-input-row input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.landing-input-row button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.landing-input-row button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
+
+    .editor-shell {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .editor-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+        background-color: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+        min-height: var(--editor-header-height);
+    }
+
+    .editor-header-title {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .editor-app-name {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #111827;
+    }
+
+    .editor-doc-id {
+        font-size: 0.75rem;
+        letter-spacing: 0.02em;
+        color: #6b7280;
+    }
+
+    .editor-status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.95rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background-color: #e5e7eb;
+        color: #374151;
+    }
+
+    .editor-status-dot {
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 50%;
+        background-color: #9ca3af;
+    }
+
+    .editor-status-pill.status-loading {
+        background-color: #e5e7eb;
+        color: #4b5563;
+    }
+
+    .editor-status-pill.status-saving {
+        background-color: rgba(245, 158, 11, 0.15);
+        color: #b45309;
+    }
+
+    .editor-status-pill.status-saving .editor-status-dot {
+        background-color: #f59e0b;
+        animation: statusPulse 1s infinite ease-in-out;
+    }
+
+    .editor-status-pill.status-saved {
+        background-color: rgba(16, 185, 129, 0.15);
+        color: #047857;
+    }
+
+    .editor-status-pill.status-saved .editor-status-dot {
+        background-color: #10b981;
+    }
+
+    .editor-status-pill.status-error {
+        background-color: rgba(248, 113, 113, 0.18);
+        color: #b91c1c;
+    }
+
+    .editor-status-pill.status-error .editor-status-dot {
+        background-color: #f87171;
+    }
+
+    .editor-status-retry {
+        margin-left: 0.25rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 0.6rem;
+        border: none;
+        background-color: rgba(185, 28, 28, 0.12);
+        color: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.15s ease;
+    }
+
+    .editor-status-retry:hover {
+        background-color: rgba(185, 28, 28, 0.24);
+    }
+
+    .editor-status-retry:active {
+        background-color: rgba(185, 28, 28, 0.32);
+    }
+
+    @keyframes statusPulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.35);
+            opacity: 0.65;
+        }
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+.landing-input-row button:not(:disabled):hover {
+    background-color: #1d4ed8;
+}
+
+.landing-input-row button:not(:disabled):active {
+    transform: translateY(1px);
+}
+
+.landing-divider {
+    display: flex;
+    align-items: center;
+    margin: 1.8rem 0;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.landing-divider::before,
+.landing-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #e5e7eb;
+}
+
+.landing-divider span {
+    padding: 0 0.75rem;
+}
+
+.landing-create-btn {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    background-color: #111827;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.landing-create-btn:hover {
+
+    @media (max-width: 640px) {
+        :root {
+            --editor-header-height: 112px;
+        }
+
+        .editor-header {
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .editor-status-pill {
+            align-self: stretch;
+            justify-content: space-between;
+        }
+    }
+    background-color: #0f172a;
+}
+
+.landing-create-btn:active {
+    transform: translateY(1px);
 }
 
 .container .ql-editor {
@@ -27,7 +301,7 @@ body {
     display: flex;
     justify-content: center;
     position: sticky;
-    top: 0;
+    top: var(--editor-header-height);
     z-index: 1;
     background-color: #f3f3f3;
     box-shadow: 0 0 5px rgba(0, 0, 0, .5);
@@ -57,4 +331,19 @@ body {
     }
 
 
+}
+
+.editor-doc-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #222;
+  margin-right: 1rem;
+  width: 250px;
+}
+
+.editor-doc-title:focus {
+  border-bottom: 1px solid #ccc;
 }
